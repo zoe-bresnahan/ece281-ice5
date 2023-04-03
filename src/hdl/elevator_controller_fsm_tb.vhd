@@ -99,9 +99,9 @@ begin
 	-- Test Plan Process --------------------------------
 	test_process : process 
 	begin
-        -- i_reset into initial state (o_floor 1)
+        -- i_reset into initial state (o_floor 2)
         w_reset <= '1';  wait for k_clk_period;
-            assert w_floor = "0001" report "bad reset" severity failure; 
+            assert w_floor = "0010" report "bad reset" severity failure; 
         -- clear reset
 		
 		-- active UP signal
@@ -109,9 +109,9 @@ begin
 		
 		-- stay on each o_floor for 2 cycles and then move up to the next o_floor
         w_stop <= '1';  wait for k_clk_period * 2;
-            assert w_floor = "0001" report "bad wait on floor1" severity failure;
+            assert w_floor = "0010" report "bad wait on floor2" severity failure;
         w_stop <= '0';  wait for k_clk_period;
-            assert w_floor = "0010" report "bad up from floor1" severity failure;
+            assert w_floor = "0011" report "bad up from floor2" severity failure;
 		-- rest of cases
         
         -- go back DOWN
