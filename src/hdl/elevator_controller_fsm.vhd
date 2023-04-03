@@ -27,6 +27,7 @@
 --|			goes inactive while i_stop is inactive.  Likewise, it will remain at the bottom 
 --|			until told to go up and i_stop is inactive.  
 --|   - The system should output the floor it is on (1 - 4) as a four-bit binary number.
+--|   - i_reset synchronously puts the FSM into state Floor 2.
 --|
 --|		Inputs:   i_clk     --> elevator clk
 --|				  i_reset   --> reset signal
@@ -108,7 +109,7 @@ begin
         o_floor <= <value> when s_floor1,
                 ...
                 ...
-                <value> when others; -- default is floo
+                <value> when others; -- default is floor 2
 	
 	-------------------------------------------------------------------------------------------------------
 	
